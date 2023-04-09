@@ -1,13 +1,8 @@
 import json
 from flask import Flask, request
 
-import os
-from dotenv import load_dotenv
-
 from ArticleSummary import ArticleSummary
 
-
-load_dotenv()
 app = Flask(__name__)
 
 

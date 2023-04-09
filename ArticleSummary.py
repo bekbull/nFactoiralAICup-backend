@@ -42,5 +42,6 @@ class ArticleSummary:
     def generate_text(self, text):
         prompt = "I need top 10 takeaways from this text: \n" + text + \
             "\n Do not write 'Sure, these are the takeaways:'. Write the takeaways with bullet points."
-        generated_text = list(filter(bool, self.text_generator(prompt, "gpt-3.5-turbo").splitlines()))
+        generated_text = list(filter(bool, self.text_generator(
+            prompt, "gpt-3.5-turbo").splitlines()))
         return generated_text
