@@ -8,9 +8,9 @@ from newspaper import Article
 class ArticleSummary:
     def __init__(self, url):
         self.title = ''
-        self.authors = ''
+        self.authors = []
         self.url = url
-        self.takeaways = ''
+        self.takeaways = []
         self.openai_api()
 
     def parse(self):
@@ -42,5 +42,5 @@ class ArticleSummary:
     def generate_text(self, text):
         prompt = "I need top 10 takeaways from this text: \n" + text + \
             "\n Do not write 'Sure, these are the takeaways:'. Write the takeaways with bullet points."
-        generated_text = self.text_generator(prompt, "gpt-3.5-turbo")
-        self.takeaways = generated_text
+        generated_text = list(filter(bool, self.text_generator(prompt, "gpt-3.5-turbo").splitlines()))
+        return generated_text
