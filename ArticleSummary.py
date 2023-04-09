@@ -27,7 +27,7 @@ class ArticleSummary:
         load_dotenv()
         openai.api_key = os.getenv("OPENAI_API_KEY")
 
-    def text_generator(prompt, model):
+    def text_generator(self, prompt, model):
         response = openai.ChatCompletion.create(
             model=model,
             messages=[
@@ -41,7 +41,7 @@ class ArticleSummary:
 
     def generate_text(self, text):
         prompt = "I need top 10 takeaways from this text: \n" + text + \
-            "\n Do not write 'Sure, these are the takeaways:'. Write the takeaways with bullet points."
+            "\n Do not write 'Sure, these are the takeaways:'. Write the takeaways with numbered bullet points."
         generated_text = list(filter(bool, self.text_generator(
             prompt, "gpt-3.5-turbo").splitlines()))
         return generated_text
