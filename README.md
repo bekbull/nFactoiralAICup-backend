@@ -6,7 +6,7 @@ This is a RESTful API built with Flask that uses OpenAI and newspaper library to
 
 The following endpoints are available:
 
-### `GET /articles?url=<url>`
+### `GET /article?url=<url>`
 Returns the top 10 takeaways for the given article URL.
 
 Parameters
